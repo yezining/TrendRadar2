@@ -41,7 +41,7 @@ app:
 # ===============================================================
 schedule:
   enabled: true                         # 是否启用调度系统
-  preset: "morning_evening"             # 预设模板名称（见上方说明）
+  preset: "custom"             # 预设模板名称（见上方说明）
 
 
 # ===============================================================
@@ -113,20 +113,20 @@ rss:
   # - 正整数：覆盖全局设置，只推送此天数内的文章
   # - 0：禁用此频道的新鲜度过滤，推送所有文章
   feeds:
-    - id: "hacker-news"
-      name: "Hacker News"
-      url: "https://hnrss.org/frontpage"
-      # max_age_days: 1               # 示例：只推送1天内的文章
+    # - id: "hacker-news"
+    #   name: "Hacker News"
+    #   url: "https://hnrss.org/frontpage"
+    #   # max_age_days: 1               # 示例：只推送1天内的文章
 
-    - id: "ruanyifeng"
-      name: "阮一峰的网络日志"
-      url: "http://www.ruanyifeng.com/blog/atom.xml"
-      # max_age_days: 7               # 示例：推送7天内的文章（更新较慢的博客）
+    # - id: "ruanyifeng"
+    #   name: "阮一峰的网络日志"
+    #   url: "http://www.ruanyifeng.com/blog/atom.xml"
+    #   # max_age_days: 7               # 示例：推送7天内的文章（更新较慢的博客）
     
-    - id: "yahoo-finance"
-      name: "雅虎财经"
-      url: "https://finance.yahoo.com/news/rssindex"
-      enabled: false                  # 禁用
+    # - id: "yahoo-finance"
+    #   name: "雅虎财经"
+    #   url: "https://finance.yahoo.com/news/rssindex"
+    #   enabled: false                  # 禁用
 
     # 自定义源示例
     # - id: "custom-feed"
@@ -155,7 +155,7 @@ rss:
 #    • 适用场景：避免重复信息干扰
 # ===============================================================
 report:
-  mode: "current"                     # 可选: daily | current | incremental
+  mode: "daily"                     # 可选: daily | current | incremental
                                       # ⚠️ 开启调度系统后，此值会被当前时间段的 report_mode 覆盖
 
 
@@ -258,7 +258,7 @@ notification:
       webhook_url: ""                 # 钉钉机器人 webhook URL
 
     wework:
-      webhook_url: ""                 # 企业微信机器人 webhook URL
+      webhook_url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=9048b858-8817-4138-a327-d69e3fd4bdad"                 # 企业微信机器人 webhook URL
       msg_type: "markdown"            # 消息类型：markdown(群机器人) | text(个人微信应用)
 
     telegram:
@@ -351,11 +351,11 @@ ai:
   # 完整列表: https://docs.litellm.ai/docs/providers
   # 如果你对于看英文文档比较头疼，那么可以点击页面右下角的 【Ask AI】 ,用中文询问怎么配置 
   
-  model: "deepseek/deepseek-chat"
+  model: "Qwen/Qwen3.5-397B-A17B"
 
-  api_key: ""                       # API Key（建议使用环境变量 AI_API_KEY）
+  api_key: "ms-6fd32576-6d99-4303-95d2-15e7e7878fc4"                       # API Key（建议使用环境变量 AI_API_KEY）
   
-  api_base: ""                      # 自定义 API 端点（可选，大多数情况留空）
+  api_base: "https://api-inference.modelscope.cn/v1/"                      # 自定义 API 端点（可选，大多数情况留空）
                                     # 示例: https://api.openai.com/v1（自建代理或兼容接口）
                                     #
                                     # 💡 超级重要：连接任意兼容 OpenAI 协议的模型商
